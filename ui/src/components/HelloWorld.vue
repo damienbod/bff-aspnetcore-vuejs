@@ -4,7 +4,48 @@ import axios from 'axios';
 
 defineProps<{ msg: string }>()
 
+currentUser: string = '';
+accessTokenExpired: boolean | undefined = false;
+isLoggedIn: boolean = false;
+data: any;
 
+getDirectApi() {
+	axios.get(`${this.getCurrentHost()}/api/DirectApi`)
+		.then((response: any) => {
+			this.data = response.data;
+		})
+		.catch((error: any) => {
+			alert(error);
+		});
+	
+}
+
+getUserProfile() {
+	axios.get(`${this.getCurrentHost()}/api/User`)
+		.then((response: any) => {
+			this.data = response.data;
+		})
+		.catch((error: any) => {
+			alert(error);
+		});
+}
+
+getGraphApiDataUsingApi() {
+  	axios.get(`${this.getCurrentHost()}/api/GraphApiData`)
+		.then((response: any) => {
+			this.data = response.data;
+		})
+		.catch((error: any) => {
+			alert(error);
+		});
+}
+
+getCurrentHost() {
+    const host = window.location.host;
+    const url = `${window.location.protocol}//${host}`;
+
+    return url;
+}
 
 const count = ref(0)
 </script>
