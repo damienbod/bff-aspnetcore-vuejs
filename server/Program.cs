@@ -74,9 +74,10 @@ else
     app.UseExceptionHandler("/Error");
 }
 
-app.UseSecurityHeaders(
-    SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
-        configuration["MicrosoftEntraID:Instance"]));
+// TODO add this again, disable it init project
+//app.UseSecurityHeaders(
+//    SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
+//        configuration["MicrosoftEntraID:Instance"]));
 
 app.UseHttpsRedirection();
 
