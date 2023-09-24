@@ -1,0 +1,39 @@
+﻿@page "/"
+@namespace BlazorBffAzureAD.Pages
+@using System.Net;
+@using NetEscapades.AspNetCore.SecurityHeaders;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, NetEscapades.AspNetCore.SecurityHeaders.TagHelpers
+@inject IHostEnvironment hostEnvironment
+@inject IConfiguration config
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery antiForgery
+@{
+    Layout = null;
+
+    var source = "";
+    if (hostEnvironment.IsDevelopment())
+    {
+        var httpClient = new HttpClient();
+        source = await httpClient.GetStringAsync($"{config["UiDevServerUrl"]}/index.html");
+    }
+    else
+    {
+        source = System.IO.File.ReadAllText($"{System.IO.Directory.GetCurrentDirectory()}{@"/wwwroot/index.html"}");
+    }
+
+    var nonce = HttpContext.GetNonce();
+
+    // The nonce is passed to the client through the HTML to avoid sync issues between tabs
+    source = source.Replace("**PLACEHOLDER_NONCE_SERVER**", nonce);
+
+    var nonceScript = $"script nonce={nonce} src=";
+    source = source.Replace("script src=", nonceScript);
+
+    var xsrf = antiForgery.GetAndStoreTokens(HttpContext);
+    var requestToken = xsrf.RequestToken;
+
+    // The XSRF-Tokens are passed to the client through cookies, since we always want the most up-to-date cookies across all tabs
+    Response.Cookies.Append("XSRF-RequestToken", requestToken ?? "", new CookieOptions() { HttpOnly = false, IsEssential = true, Secure = true, SameSite = SameSiteMode.Strict });
+}
+
+@Html.Raw(source)
