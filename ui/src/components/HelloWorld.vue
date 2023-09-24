@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import axios from 'axios';
 
-currentUser: ''; 
-accessTokenExpired: false;
-isLoggedIn: false;
+const props = defineProps({
+	currentUser: '',
+    accessTokenExpired: false,
+    isLoggedIn: false,
+});
 
 function getDirectApi() {
-	axios.get(`${this.getCurrentHost()}/api/DirectApi`)
+	axios.get(`${getCurrentHost()}/api/DirectApi`)
 		.then((response: any) => {
-			this.data = response.data;
+			return response.data;
 		})
 		.catch((error: any) => {
 			alert(error);
@@ -17,9 +18,9 @@ function getDirectApi() {
 }
 
 function getUserProfile() {
-	axios.get(`${this.getCurrentHost()}/api/User`)
+	axios.get(`${getCurrentHost()}/api/User`)
 	.then((response: any) => {
-		this.data = response.data;
+		return response.data;
 	})
 	.catch((error: any) => {
 		alert(error);
@@ -27,9 +28,9 @@ function getUserProfile() {
 }
 
 function getGraphApiDataUsingApi() {
-	axios.get(`${this.getCurrentHost()}/api/GraphApiData`)
+	axios.get(`${getCurrentHost()}/api/GraphApiData`)
 		.then((response: any) => {
-			this.data = response.data;
+			return response.data;
 		})
 		.catch((error: any) => {
 			alert(error);
@@ -57,7 +58,9 @@ function getCurrentHost() {
 		</form>
 	</div>
 	
-	<button class='btn' @click='getProtectedApiData' v-if='isLoggedIn'>Get API data</button>
+	<button class='btn' @click='getUserProfile' v-if='isLoggedIn'>Get API data</button>
+	<button class='btn' @click='getDirectApi' v-if='isLoggedIn'>Get API data</button>
+	<button class='btn' @click='getGraphApiDataUsingApi' v-if='isLoggedIn'>Get API data</button>
   </div>
   
   <p class="read-the-docs">BFF using ASP.NET Core and Vue.js</p>
