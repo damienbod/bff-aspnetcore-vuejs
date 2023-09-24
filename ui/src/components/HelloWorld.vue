@@ -1,34 +1,30 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import axios from 'axios';
 
 defineProps<{ msg: string }>()
+
+
 
 const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+  <div class='home'>
+	<p v-if='isLoggedIn'>User: {{ username }}</p>
+	
+	<a class="btn" href="api/Account/Login" v-if='!isLoggedIn'>Log in</a>
+	
+	<div v-if='isLoggedIn'>
+		<form method="post" action="api/Account/Logout">
+		  <button class="btn btn-link" type="submit">Sign out</button>
+		</form>
+	</div>
+	
+	<button class='btn' @click='getProtectedApiData' v-if='isLoggedIn'>Get API data</button>
   </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  
+  <p class="read-the-docs">BFF using ASP.NET Core and Vue.js</p>
 </template>
 
 <style scoped>
