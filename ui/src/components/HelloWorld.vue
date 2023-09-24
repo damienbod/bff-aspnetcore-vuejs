@@ -5,11 +5,13 @@ const props = defineProps({
 	currentUser: '',
     accessTokenExpired: false,
     isLoggedIn: false,
+	data: null
 });
 
 function getDirectApi() {
 	axios.get(`${getCurrentHost()}/api/DirectApi`)
 		.then((response: any) => {
+			props.data =  response.data;
 			return response.data;
 		})
 		.catch((error: any) => {
@@ -20,6 +22,13 @@ function getDirectApi() {
 function getUserProfile() {
 	axios.get(`${getCurrentHost()}/api/User`)
 	.then((response: any) => {
+		console.log(response);
+		props.data =  response.data;
+		if(response.data.isAuthenticated){
+			props.isLoggedIn = true;
+			props.currentUser = response.data.claims[0].value
+		}
+
 		return response.data;
 	})
 	.catch((error: any) => {
@@ -30,6 +39,7 @@ function getUserProfile() {
 function getGraphApiDataUsingApi() {
 	axios.get(`${getCurrentHost()}/api/GraphApiData`)
 		.then((response: any) => {
+			props.data =  response.data;
 			return response.data;
 		})
 		.catch((error: any) => {
