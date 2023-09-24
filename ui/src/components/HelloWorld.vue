@@ -58,9 +58,9 @@ function getCurrentHost() {
 		</form>
 	</div>
 	
-	<button class='btn' @click='getUserProfile' v-if='isLoggedIn'>Get API data</button>
-	<button class='btn' @click='getDirectApi' v-if='isLoggedIn'>Get API data</button>
-	<button class='btn' @click='getGraphApiDataUsingApi' v-if='isLoggedIn'>Get API data</button>
+	<button class='btn' @click='getUserProfile' >Get Profile data</button>
+	<button class='btn' @click='getDirectApi' >Get API data</button>
+	<button class='btn' @click='getGraphApiDataUsingApi' >Get Graph data</button>
   </div>
   
   <p class="read-the-docs">BFF using ASP.NET Core and Vue.js</p>
