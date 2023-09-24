@@ -2,14 +2,11 @@
 import { ref } from 'vue'
 import axios from 'axios';
 
-defineProps<{ msg: string }>()
+currentUser: ''; 
+accessTokenExpired: false;
+isLoggedIn: false;
 
-currentUser: string = '';
-accessTokenExpired: boolean | undefined = false;
-isLoggedIn: boolean = false;
-data: any;
-
-getDirectApi() {
+function getDirectApi() {
 	axios.get(`${this.getCurrentHost()}/api/DirectApi`)
 		.then((response: any) => {
 			this.data = response.data;
@@ -17,37 +14,35 @@ getDirectApi() {
 		.catch((error: any) => {
 			alert(error);
 		});
-	
 }
 
-getUserProfile() {
+function getUserProfile() {
 	axios.get(`${this.getCurrentHost()}/api/User`)
+	.then((response: any) => {
+		this.data = response.data;
+	})
+	.catch((error: any) => {
+		alert(error);
+	});
+}
+
+function getGraphApiDataUsingApi() {
+	axios.get(`${this.getCurrentHost()}/api/GraphApiData`)
 		.then((response: any) => {
 			this.data = response.data;
 		})
 		.catch((error: any) => {
 			alert(error);
-		});
+	});
 }
 
-getGraphApiDataUsingApi() {
-  	axios.get(`${this.getCurrentHost()}/api/GraphApiData`)
-		.then((response: any) => {
-			this.data = response.data;
-		})
-		.catch((error: any) => {
-			alert(error);
-		});
+function getCurrentHost() {
+	const host = window.location.host;
+	const url = `${window.location.protocol}//${host}`;
+
+	return url;
 }
 
-getCurrentHost() {
-    const host = window.location.host;
-    const url = `${window.location.protocol}//${host}`;
-
-    return url;
-}
-
-const count = ref(0)
 </script>
 
 <template>
