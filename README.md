@@ -1,8 +1,6 @@
 # bff-aspnetcore-vuejs
 
-[![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/dotnet.yml)
-
-[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/LICENSE)
+[![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/dotnet.yml) [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/damienbod/bff-aspnetcore-vuejs/blob/main/LICENSE)
 
 ## Links
 
