@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import axios from 'axios';
 
-const props = defineProps({
-	currentUser: '',
-    accessTokenExpired: false,
-    isLoggedIn: false,
-	data: null
-});
+import { ref } from 'vue'
+
+const isLoggedIn = ref(0)
+const currentUser = ref(1)
+const jsonResponse = ref(2)
 
 function getDirectApi() {
 	axios.get(`${getCurrentHost()}/api/DirectApi`)
 		.then((response: any) => {
-			props.data =  response.data;
+			jsonResponse.value =  response.data;
 			return response.data;
 		})
 		.catch((error: any) => {
@@ -23,10 +22,10 @@ function getUserProfile() {
 	axios.get(`${getCurrentHost()}/api/User`)
 	.then((response: any) => {
 		console.log(response);
-		props.data =  response.data;
+		jsonResponse.value  =  response.data;
 		if(response.data.isAuthenticated){
-			props.isLoggedIn = true;
-			props.currentUser = response.data.claims[0].value
+			isLoggedIn.value  = true;
+			currentUser.value  = response.data.claims[0].value
 		}
 
 		return response.data;
@@ -39,7 +38,7 @@ function getUserProfile() {
 function getGraphApiDataUsingApi() {
 	axios.get(`${getCurrentHost()}/api/GraphApiData`)
 		.then((response: any) => {
-			props.data =  response.data;
+			jsonResponse.value  =  response.data;
 			return response.data;
 		})
 		.catch((error: any) => {
@@ -58,7 +57,7 @@ function getCurrentHost() {
 
 <template>
   <div class='home'>
-	<p v-if='isLoggedIn'>User: {{ username }}</p>
+	<p v-if='isLoggedIn'>User: {{ currentUser }}</p>
 	
 	<a class="btn" href="api/Account/Login" v-if='!isLoggedIn'>Log in</a>
 	
