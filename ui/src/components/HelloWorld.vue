@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import ResultsDisplay from './ResultsDisplay.vue'
 import axios from 'axios';
-
 import { ref } from 'vue'
 
 const isLoggedIn = ref(0)
@@ -57,7 +57,7 @@ function getCurrentHost() {
 
 <template>
   <div class='home'>
-	<p v-if='isLoggedIn'>User: {{ currentUser }}</p>
+	<ResultsDisplay v-if='isLoggedIn' currentUser='iii' />
 	
 	<a class="btn" href="api/Account/Login" v-if='!isLoggedIn'>Log in</a>
 	
