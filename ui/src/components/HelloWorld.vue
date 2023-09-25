@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import ResultsDisplay from './ResultsDisplay.vue'
 import axios from 'axios';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const isLoggedIn = ref(0)
 const currentUser = ref(1)
 const jsonResponse = ref(2)
+
+onMounted(() => {
+  getUserProfile()
+})
 
 function getDirectApi() {
 	axios.get(`${getCurrentHost()}/api/DirectApi`)
