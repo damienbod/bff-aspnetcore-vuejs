@@ -71,9 +71,9 @@ function getCurrentHost() {
 
 	</div>
 	
-	<button class='btn' @click='getUserProfile' >Get Profile data</button>
-	<button class='btn' @click='getDirectApi' >Get API data</button>
-	<button class='btn' @click='getGraphApiDataUsingApi' >Get Graph data</button>
+	<button v-if='isLoggedIn' class='btn' @click='getUserProfile' >Get Profile data</button>
+	<button v-if='isLoggedIn' class='btn' @click='getDirectApi' >Get API data</button>
+	<button v-if='isLoggedIn' class='btn' @click='getGraphApiDataUsingApi' >Get Graph data</button>
 	
 	<ResultsDisplay v-if='isLoggedIn' 
 		v-bind:currentUser='currentUser'
