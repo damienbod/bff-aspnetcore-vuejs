@@ -3,9 +3,9 @@ import ResultsDisplay from './ResultsDisplay.vue'
 import axios from 'axios';
 import { ref, onMounted } from 'vue'
 
-const isLoggedIn = ref(0)
-const currentUser = ref(1)
-const jsonResponse = ref(2)
+const isLoggedIn = ref<boolean>()
+const currentUser = ref<any>()
+const jsonResponse = ref<any>()
 
 onMounted(() => {
   getUserProfile()
