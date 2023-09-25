@@ -57,7 +57,7 @@ function getCurrentHost() {
 
 <template>
   <div class='home'>
-	<ResultsDisplay v-if='isLoggedIn' currentUser='iii' />
+	<ResultsDisplay v-if='isLoggedIn' v-bind:currentUser='currentUser' />
 	
 	<a class="btn" href="api/Account/Login" v-if='!isLoggedIn'>Log in</a>
 	
@@ -65,11 +65,13 @@ function getCurrentHost() {
 		<form method="post" action="api/Account/Logout">
 		  <button class="btn btn-link" type="submit">Sign out</button>
 		</form>
+
 	</div>
 	
 	<button class='btn' @click='getUserProfile' >Get Profile data</button>
 	<button class='btn' @click='getDirectApi' >Get API data</button>
 	<button class='btn' @click='getGraphApiDataUsingApi' >Get Graph data</button>
+		
   </div>
   
   <p class="read-the-docs">BFF using ASP.NET Core and Vue.js</p>
