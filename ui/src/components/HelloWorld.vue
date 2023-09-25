@@ -2,6 +2,7 @@
 import ResultsDisplay from './ResultsDisplay.vue'
 import axios from 'axios';
 import { ref, onMounted } from 'vue'
+import { getCookie } from '../getCookie';
 
 const isLoggedIn = ref<boolean>()
 const currentUser = ref<any>()
@@ -11,8 +12,16 @@ onMounted(() => {
   getUserProfile()
 })
 
+const axiosConfig = {
+  headers:{
+    'X-XSRF-TOKEN': getCookie('XSRF-RequestToken'),
+  }
+};
+
+// request.headers.set('X-XSRF-TOKEN',  getCookie('XSRF-RequestToken'));
+
 function getDirectApi() {
-	axios.get(`${getCurrentHost()}/api/DirectApi`)
+	axios.get(`${getCurrentHost()}/api/DirectApi`, axiosConfig)
 		.then((response: any) => {
 			jsonResponse.value =  response.data;
 			return response.data;
@@ -40,7 +49,7 @@ function getUserProfile() {
 }
 
 function getGraphApiDataUsingApi() {
-	axios.get(`${getCurrentHost()}/api/GraphApiData`)
+	axios.get(`${getCurrentHost()}/api/GraphApiData`, axiosConfig)
 		.then((response: any) => {
 			jsonResponse.value  =  response.data;
 			return response.data;
