@@ -1,12 +1,14 @@
 <script setup lang="ts">
 
-defineProps<{ currentUser: string }>()
+defineProps<{ currentUser: string, jsonResponse:any }>()
 
 </script>
 
 <template>
   <div class='home'>
 	<p>User: {{ currentUser }}</p>
+	
+	<p>{{ jsonResponse }}</p>
   </div>
 </template>
 
