@@ -4,14 +4,14 @@
 
 ## Setup Server 
 
-The ASP.NET Core project is setup to run in development and production. In production, it uses the VUE JS production build deployed to the wwwroot. In development, it uses MS YARP reverse proxy to forward requests.
+The ASP.NET Core project is setup to run in development and production. In production, it uses the Vue.js production build deployed to the wwwroot. In development, it uses MS YARP reverse proxy to forward requests.
 
 > [!IMPORTANT]  
-> In production, the Vue JS project is built into the **wwwroot** of the .NET project.
+> In production, the Vue.js project is built into the **wwwroot** of the .NET project.
 
 ![BFF production](https://github.com/damienbod/bff-aspnetcore-vuejs/blob/main/images/vue-aspnetcore-bff_01.png)
 
-Configure the YARP reverse proxy to match the VUE JS URL. This is only required in development. I always use HTTPS in development and the port needs to match the VUE JS developement env (vite.config.js).
+Configure the YARP reverse proxy to match the Vue.js URL. This is only required in development. I always use HTTPS in development and the port needs to match the Vue.js developement env (vite.config.js).
 
 ```json
  "UiDevServerUrl": "https://localhost:4201",
@@ -42,7 +42,7 @@ Configure the YARP reverse proxy to match the VUE JS URL. This is only required 
 ```
 
 
-## Setup Vue JS Vite project
+## Setup Vue.js Vite project
 
 Add the certificates to the nx project for example in the **/certs** folder
 
@@ -77,13 +77,14 @@ export default defineConfig({
 })
 ```
 
+
 > [!NOTE]  
 > The ASP.NET Core project setup uses port 4202, this needs to match the YARP reverse proxy settings for development.
 
 
 ## Setup development
 
-The development environment is setup to use the defualt tools for each of the tech stacks. VUE JS is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the VUE JS development into the backend application.
+The development environment is setup to use the defualt tools for each of the tech stacks. Vue.js is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Vue.js development into the backend application.
 
 ![BFF development](https://github.com/damienbod/bff-aspnetcore-vuejs/blob/main/images/vue-aspnetcore-bff-yarp-dev_01.png)
 
@@ -157,7 +158,7 @@ The client secret or client certificate needs to be setup, see Microsoft Entra I
 
 ## Debugging
 
-Start the Vue JS project from the **ui** folder
+Start the Vue.js project from the **ui** folder
 
 ```
 npm start
@@ -173,7 +174,7 @@ Or just open Visual Studio and run the solution.
 
 ## github actions build
 
-Github actions is used for the DevOps. The build pipeline builds both the .NET project and the VUE JS project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
+Github actions is used for the DevOps. The build pipeline builds both the .NET project and the Vue.js project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
 
 ```yaml
 
@@ -226,20 +227,20 @@ deployment test server: TODO
 - Yarp.ReverseProxy
 - Microsoft.Identity.Web
 - ASP.NET Core
-- VueJS
+- Vue.js
 - Vite
 
 ## Links
 
-https://vitejs.dev/
+https://vuejs.org/
 
-https://www.koderhq.com/tutorial/vue/vite/
+https://vitejs.dev/
 
 https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
 
-https://nx.dev/getting-started/intro
-
 https://github.com/AzureAD/microsoft-identity-web
+
+https://www.koderhq.com/tutorial/vue/vite/
 
 https://github.com/isolutionsag/aspnet-react-bff-proxy-example
 
