@@ -219,7 +219,7 @@ jobs:
 
 The deployment pipeline builds both projects and deployes this to Azure using an Azure App Service. See **azure-webapps-dotnet-core.yml**
 
-deployment test server: TODO
+deployment test server: https://bff-vue-aspnetcore.azurewebsites.net/
 
 ## Credits and used libraries
 
