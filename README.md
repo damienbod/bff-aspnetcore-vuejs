@@ -48,7 +48,7 @@ Add the certificates to the nx project for example in the **/certs** folder
 
 Update the vite.config.ts file:
 
-```json
+```typescipt
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import fs from 'fs';
