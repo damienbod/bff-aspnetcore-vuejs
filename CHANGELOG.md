@@ -1,5 +1,10 @@
 ## ASP.NET Core, Vue.js BFF using Microsoft Entra ID Changelog
 
+### 2023-09-30 0.0.2
+
+- Update packages
+- Fixed dynamic CSP nonce injection
+
 ### 2023-09-26 0.0.1
 
 - Initial version using Vue.js (typescript & vite) and ASP.NET Core
