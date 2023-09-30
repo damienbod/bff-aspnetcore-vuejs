@@ -7,7 +7,7 @@
 
 ### 2023-09-26 0.0.1
 
-- Initial version using Vue.js (typescript & vite) and ASP.NET Core
+- Initial version using Vue.js (Typescript & Vite) and ASP.NET Core
   - ASP.NET Core version 7.x
   - Vue.js (typescript & vite)
   - CRSF used in web requests
