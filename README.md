@@ -236,6 +236,8 @@ https://vuejs.org/
 
 https://vitejs.dev/
 
+https://github.com/vuejs/create-vue
+
 https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
 
 https://github.com/AzureAD/microsoft-identity-web
