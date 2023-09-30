@@ -58,8 +58,8 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     https: {
-		key: fs.readFileSync('./certs/dev_localhost.key'),
-		cert: fs.readFileSync('./certs/dev_localhost.pem'),
+      key: fs.readFileSync('./certs/dev_localhost.key'),
+      cert: fs.readFileSync('./certs/dev_localhost.pem'),
 	},
     port: 4202,
     strictPort: true, // exit if port is in use
