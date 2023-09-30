@@ -26,11 +26,11 @@
     // The nonce is passed to the client through the HTML to avoid sync issues between tabs
     source = source.Replace("**PLACEHOLDER_NONCE_SERVER**", nonce);
 
-    var nonceScript = $"<script nonce={nonce} type=";
+    var nonceScript = $"<script nonce=\"{nonce}\" type=";
     source = source.Replace("<script type=", nonceScript);
 
     // link rel="stylesheet"
-    var nonceLinkStyle = $"<link nonce={nonce} rel=\"stylesheet";
+    var nonceLinkStyle = $"<link nonce=\"{nonce}\" rel=\"stylesheet";
     source = source.Replace("<link rel=\"stylesheet", nonceLinkStyle);
 
     var xsrf = antiForgery.GetAndStoreTokens(HttpContext);
