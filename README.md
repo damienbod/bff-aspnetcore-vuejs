@@ -251,3 +251,5 @@ https://github.com/damienbod/bff-aspnetcore-angular
 https://github.com/damienbod/bff-auth0-aspnetcore-angular
 
 https://github.com/damienbod/bff-openiddict-aspnetcore-angular
+
+https://github.com/damienbod/bff-azureadb2c-aspnetcore-angular
