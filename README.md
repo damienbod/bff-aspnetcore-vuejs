@@ -2,6 +2,8 @@
 
 [![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/dotnet.yml) [![Build and deploy to Azure Web App](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-vuejs/actions/workflows/azure-webapps-dotnet-core.yml) [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/damienbod/bff-aspnetcore-vuejs/blob/main/LICENSE)
 
+[Implement a secure web application using Vue.js and an ASP.NET Core server](https://damienbod.com/2023/10/02/implement-a-secure-web-application-using-vue-js-and-an-asp-net-core-server/)
+
 ## Setup Server 
 
 The ASP.NET Core project is setup to run in development and production. In production, it uses the Vue.js production build deployed to the wwwroot. In development, it uses MS YARP reverse proxy to forward requests.
