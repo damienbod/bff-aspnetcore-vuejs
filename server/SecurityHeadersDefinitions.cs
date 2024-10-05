@@ -4,7 +4,7 @@ public static class SecurityHeadersDefinitions
 {
     public static HeaderPolicyCollection GetHeaderPolicyCollection(bool isDev, string? idpHost)
     {
-        if(idpHost == null)
+        if (idpHost == null)
         {
             throw new ArgumentNullException(nameof(idpHost));
         }

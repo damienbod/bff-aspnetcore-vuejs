@@ -20,7 +20,7 @@ public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticati
             var tokenAcquisition = context.HttpContext.RequestServices
                 .GetRequiredService<ITokenAcquisition>();
 
-            string token = await tokenAcquisition.GetAccessTokenForUserAsync(scopes: _downstreamScopes, 
+            string token = await tokenAcquisition.GetAccessTokenForUserAsync(scopes: _downstreamScopes,
                 user: context.Principal);
         }
         catch (MicrosoftIdentityWebChallengeUserException ex) when (AccountDoesNotExitInTokenCache(ex))
@@ -31,7 +31,7 @@ public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticati
 
     private static bool AccountDoesNotExitInTokenCache(MicrosoftIdentityWebChallengeUserException ex)
     {
-        return ex.InnerException is MsalUiRequiredException 
+        return ex.InnerException is MsalUiRequiredException
             && (ex.InnerException as MsalUiRequiredException)!.ErrorCode == "user_null";
     }
 }
