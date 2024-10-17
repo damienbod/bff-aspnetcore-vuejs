@@ -1,10 +1,10 @@
 ## ASP.NET Core, Vue.js BFF using Microsoft Entra ID Changelog
 
-### 2024-10-17 0.0.15
+### 2024-10-17 0.0.6
 - Updated packages
-- Updated security headers
-- 
-### 2024-10-05 0.0.14
+- Updated security headers performance
+
+### 2024-10-05 0.0.5
 - Updated packages
 - Updated security headers
 
