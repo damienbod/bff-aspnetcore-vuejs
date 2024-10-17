@@ -16,12 +16,11 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 
 var services = builder.Services;
 var configuration = builder.Configuration;
-var env = builder.Environment;
 
 services.AddSecurityHeaderPolicies()
   .SetPolicySelector((PolicySelectorContext ctx) =>
   {
-      return SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
+      return SecurityHeadersDefinitions.GetHeaderPolicyCollection(builder.Environment.IsDevelopment(),
         configuration["MicrosoftEntraID:Instance"]);
   });
 
@@ -72,7 +71,7 @@ var app = builder.Build();
 
 IdentityModelEventSource.ShowPII = true;
 
-if (env.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
