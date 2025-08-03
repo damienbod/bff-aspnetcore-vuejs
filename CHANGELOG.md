@@ -1,5 +1,8 @@
 ## ASP.NET Core, Vue.js BFF using Microsoft Entra ID Changelog
 
+### 2025-08-03 0.0.8
+- Updated packages
+
 ### 2024-12-18 0.0.7
 - .NET 9
 
@@ -21,8 +24,8 @@
 ### 2023-09-26 0.0.1
 - Initial version using Vue.js (Typescript & Vite) and ASP.NET Core
   - ASP.NET Core version 7.x
-  - Vue.js (typescript & vite)
+  - Vue.js (typescript & Vite)
   - CRSF used in web requests
   - Strong CSP in production
   - Azure deployment pipeline
-  - Yarp proxy for developement
+  - Yarp proxy for development
