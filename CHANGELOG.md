@@ -1,5 +1,8 @@
 ## ASP.NET Core, Vue.js BFF using Microsoft Entra ID Changelog
 
+### 2025-12-07 1.0.0
+- Updated .NET 10
+
 ### 2025-08-03 0.0.8
 - Updated packages
 
